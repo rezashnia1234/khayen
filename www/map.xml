@@ -1,0 +1,490 @@
+<krpano version="1.0.8">
+
+    <style name="spot" url="skin/spot.png" align="lefttop" edge="bottom" oy="4"  />
+    <plugin name="activespot" url="skin/mappointactive.png" keep="true" align="center" edge="center" visible="false" zorder="3" />
+
+    
+    <layer name="mapRadarBACK" scale="0.8"  width="435" height="300" scalechildren="true" align="lefttop"  keep="true" type="container" >
+    <layer name="mapRadar"  x="20" y="20"   keep="true" type="container" align="lefttop" scale="0.6" width="700" height="400" bgcolor="0x000000" bgalpha="0.6" scalechildren="true" >
+        <layer name="scrollarea" url="%SWFPATH%/plugins/scrollarea.swf" handcursor="false" alturl="%SWFPATH%/plugins/scrollarea.js" align="center" width="1500" height="817" direction="all" zorder="180" scalechildren="true">
+
+        </layer>
+    </layer>
+</layer>
+
+
+
+
+    <plugin name="map" url="skin/khayen.jpg" align="lefttop" handcursor="false" keep="true" width="1500" height="817" scale="1" parent="scrollarea" scalechildren="true" />
+    <!-- radar plugin, set heading with "plugin[radar].heading"  parent="scrollarea"-->
+    <plugin name="radar"
+            url="%SWFPATH%/plugins/radar.swf"
+            alturl="%SWFPATH%/plugins/radar.js"
+            parent="map"
+            zorder="130"
+            keep="true"
+            heading="0"
+            align="lefttop"
+            edge="center"
+            x="0" y="0"
+            linecolor="0"
+            fillcolor="0xFF0000"
+            scale="0.6"
+            visible="false"
+            editmode="true"
+            />
+
+<action name="mapRadarzoomin">
+    mul(newscale,get(plugin[mapRadarBACK].scale),%1);
+    tween(plugin[mapRadarBACK].scale, get(newscale));
+</action>
+<action name="mapRadarzoomout">
+    div(newscale,get(plugin[mapRadarBACK].scale),%1);
+    tween(plugin[mapRadarBACK].scale, get(newscale));
+</action>
+<action name="mapImageZoomin">
+    mul(newscale,get(plugin[map].scale),%1);
+    tween(plugin[map].scale, get(newscale));
+    tween(plugin[scrollarea].scale, get(newscale)); 
+</action>
+<action name="mapImageZoomout">
+    div(newscale,get(plugin[map].scale),%1);
+    tween(plugin[map].scale, get(newscale));
+    tween(plugin[scrollarea].scale, get(newscale));
+</action>
+
+
+
+
+
+
+    <plugin name="mapRadarzoominicon1" url="skin/map-box-zoom.png" keep="true"  
+            align="lefttop" x="20"  y="20" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="20" 
+            height="20"
+            parent="mapRadarBACK"
+            zorder="300"
+            />
+    <plugin name="mapRadarzoomin" url="skin/zoomin.png" keep="true"  
+            align="lefttop" x="41"  y="20" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="20" 
+            height="21"
+            parent="mapRadarBACK"
+            zorder="300"
+            onhover="mapRadarzoomin(1.1);"
+            />
+    <plugin name="mapRadarzoomout" url="skin/zoomout.png" keep="true"  
+            align="lefttop" x="62"  y="20" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="20" 
+            height="21"
+            parent="mapRadarBACK"
+            zorder="300"
+            onhover="mapRadarzoomout(1.1);"
+            />
+
+
+
+    <plugin name="mapRadarzoominicon2" url="skin/map-image-zoom.png" keep="true"  
+            align="lefttop" x="20"  y="45" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="20" 
+            height="20"
+            parent="mapRadarBACK"
+            zorder="300"
+            />
+    <plugin name="mapRadarzoomin2" url="skin/zoomin.png" keep="true"  
+            align="lefttop" x="41"  y="45" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="20" 
+            height="21"
+            parent="mapRadarBACK"
+            zorder="300"
+            onhover="mapImageZoomin(1.1);"
+            />
+    <plugin name="mapRadarzoomout2" url="skin/zoomout.png" keep="true"  
+            align="lefttop" x="62"  y="45" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="20" 
+            height="21"
+            parent="mapRadarBACK"
+            zorder="300"
+            onhover="mapImageZoomout(1.1);"
+            />
+     
+
+    <!-- <plugin name="mapRadarBACK"  url="skin/blank.png"  keep="true"  
+            align="lefttop" handcursor="false" 
+            scalechildren="flase"
+            width="241" 
+            height="244"
+            zorder="120"
+            maskchildren="false"
+            x="0"
+            y="0"
+            />
+
+
+    <plugin name="mapRadar" url="skin/map.png" keep="true"
+            align="lefttop" handcursor="false" 
+            scalechildren="true"
+            width="241" 
+            height="244"
+            zorder="121"
+            maskchildren="true"
+            x="16"
+            y="16"
+            parent="mapRadarBACK"
+            />
+
+
+    <plugin name="mapBackTopRight" url="skin/mapBack-top-right.png" keep="true"  
+            align="lefttop" x="10"  y="10" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="115" 
+            height="115"
+            parent="mapRadarBACK"
+            />
+
+    <plugin name="mapBackLeftBottom" url="skin/mapBack-bottom-left.png" keep="true"  
+            align="bottomright" x="0"  y="0" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="115" 
+            height="84"
+            parent="mapRadarBACK"
+
+            />  -->
+
+
+
+<action name="mapRadarzoomin">
+    mul(newwidth,get(plugin[mapRadar].width),%1);
+    tween(plugin[mapRadar].width, get(newwidth));
+    mul(newheight,get(plugin[mapRadar].height),%1);
+    tween(plugin[mapRadar].height, get(newheight));
+
+    mul(newwidth,get(plugin[mapRadarBACK].width),%1);
+    tween(plugin[mapRadarBACK].width, get(newwidth));
+    mul(newheight,get(plugin[mapRadarBACK].height),%1);
+    tween(plugin[mapRadarBACK].height, get(newheight));
+</action>
+<action name="mapRadarzoomout">
+    div(newwidth,get(plugin[mapRadar].width),%1);
+    tween(plugin[mapRadar].width, get(newwidth));
+    div(newheight,get(plugin[mapRadar].height),%1);
+    tween(plugin[mapRadar].height, get(newheight));
+
+    div(newwidth,get(plugin[mapRadarBACK].width),%1);
+    tween(plugin[mapRadarBACK].width, get(newwidth));
+    div(newheight,get(plugin[mapRadarBACK].height),%1);
+    tween(plugin[mapRadarBACK].height, get(newheight));
+</action>
+
+<!--
+    <plugin name="mapRadarzoomin" url="skin/zoomin.png" keep="true"  
+            align="lefttop" x="17"  y="15" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="20" 
+            height="21"
+            parent="mapRadarBACK"
+            zorder="300"
+            onhover="mapRadarzoomin(1.1);"
+            />
+    <plugin name="mapRadarzoomout" url="skin/zoomout.png" keep="true"  
+            align="lefttop" x="38"  y="15" handcursor="true" 
+            scalechildren="true"
+            maskchildren="true"
+            width="20" 
+            height="21"
+            parent="mapRadarBACK"
+            zorder="300"
+            onhover="mapRadarzoomout(1.1);"
+            /> -->
+
+
+
+    activated hotpot
+    <plugin name="activespot" url="skin/mappointactive.png" keep="true" align="center" edge="center" visible="false" zorder="3" />
+
+    <!-- radar plugin, set heading with "plugin[radar].heading" -->
+
+    
+
+    <!-- activatespot action, 
+        tween(plugin[mapRadar].alpha,1);
+        set(plugin[mapRadar].enabled,true);
+
+         - this action has two arguments:
+           - %1 = the current spot
+           - %2 = the current radar heading
+    -->
+    <action name="activatespotRadar">
+        set(plugin[activespot].parent, plugin[%1]);
+        set(plugin[activespot].visible, true);
+        
+        copy(plugin[radar].x, plugin[%1].x);
+        copy(plugin[radar].y, plugin[%1].y);
+        
+        set(plugin[radar].visible, true);
+        set(plugin[radar].heading, %2);
+
+
+
+        set(x,0);
+        set(y,0);
+        add(x,plugin[%1].x,90);
+        add(y,plugin[%1].y,107);
+        mul(x,plugin[map].scale);
+        mul(y,plugin[map].scale);
+        //trace('x=',plugin[%1].x,'y=',plugin[%1].y);
+        //trace('x=',get(x));
+        layer[scrollarea].scrolltocenter(get(x),get(y));
+    </action>
+    <action name="showRadar">
+        tween(plugin[mapRadar].alpha,0.85);
+        set(plugin[mapRadar].enabled,true);
+    </action>
+
+
+    <!-- load and update map actions -->
+    <action name="update_map_spotRadar">
+        plugin[mapRadar].activatespot(%1);
+        plugin[mapRadar].pantospot(%1);
+        loadscene(%1, null, MERGE, BLEND(1));
+    </action>
+
+<!---/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!---/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!---/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<!---/////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+
+     <plugin name="scene_01_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="786"
+        y="435"
+        parent="map"
+        onhover="showtext(01, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />      
+     <plugin name="scene_02_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="780"
+        y="375"
+        parent="map"
+        onhover="showtext(02, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />     
+     <plugin name="scene_03_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="749"
+        y="376"
+        parent="map"
+        onhover="showtext(03, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_04_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="748"
+        y="345"
+        parent="map"
+        onhover="showtext(04, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />  
+     <plugin name="scene_05_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="748"
+        y="311"
+        parent="map"
+        onhover="showtext(05, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        /> 
+     <plugin name="scene_06_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="727"
+        y="303"
+        parent="map"
+        onhover="showtext(06, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        /> 
+     <plugin name="scene_07_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="705"
+        y="298"
+        parent="map"
+        onhover="showtext(07, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        /> 
+     <plugin name="scene_08_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="700"
+        y="285"
+        parent="map"
+        onhover="showtext(08, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        /> 
+     <plugin name="scene_09_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="662"
+        y="297"
+        parent="map"
+        onhover="showtext(09, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        /> 
+     <plugin name="scene_010_sphere" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="634"
+        y="292"
+        parent="map"
+        onhover="showtext(010, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        /> 
+     <plugin name="scene_011_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="632"
+        y="243"
+        parent="map"
+        onhover="showtext(011, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        /> 
+     <plugin name="scene_012_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="600"
+        y="240"
+        parent="map"
+        onhover="showtext(012, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        /> 
+     <plugin name="scene_013_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="554"
+        y="239"
+        parent="map"
+        onhover="showtext(013, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_014_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="523"
+        y="238"
+        parent="map"
+        onhover="showtext(014, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_015_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="498"
+        y="237"
+        parent="map"
+        onhover="showtext(015, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_016_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="472"
+        y="236"
+        parent="map"
+        onhover="showtext(016, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_017_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="461"
+        y="242"
+        parent="map"
+        onhover="showtext(017, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_018_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="453"
+        y="235"
+        parent="map"
+        onhover="showtext(018, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_019_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="424"
+        y="236"
+        parent="map"
+        onhover="showtext(019, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_020_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="409"
+        y="222"
+        parent="map"
+        onhover="showtext(020, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_021_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="346"
+        y="230"
+        parent="map"
+        onhover="showtext(021, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_022_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="285"
+        y="290"
+        parent="map"
+        onhover="showtext(022, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_023_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="242"
+        y="341"
+        parent="map"
+        onhover="showtext(023, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_035_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="200"
+        y="367"
+        parent="map"
+        onhover="showtext(035, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_036_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="211"
+        y="373"
+        parent="map"
+        onhover="showtext(036, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_028_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="383"
+        y="357"
+        parent="map"
+        onhover="showtext(028, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_029_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="386"
+        y="329"
+        parent="map"
+        onhover="showtext(029, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_030_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="428"
+        y="356"
+        parent="map"
+        onhover="showtext(030, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_031_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="1204"
+        y="293"
+        parent="map"
+        onhover="showtext(031, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+     <plugin name="scene_032_sphere_copy" url="skin/mappoint.png" keep="true"  align="lefttop" edge="center"  zorder="120"
+        x="1288"
+        y="302"
+        parent="map"
+        onhover="showtext(032, ToolTips);"
+        onclick="update_map_spotRadar(get(name));"
+        />
+
+
+
+
+
+        
+</krpano>
